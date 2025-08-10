@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/expenseListFragment">
+
+    <fragment
+        android:id="@+id/expenseListFragment"
+        android:name="com.example.smartdailyexpensetracker.presentation.fragment.ExpenseListFragment"
+        android:label="fragment_expense_list"
+        tools:layout="@layout/fragment_expense_list" />
+    <fragment
+        android:id="@+id/expenseEntryFragment"
+        android:name="com.example.smartdailyexpensetracker.presentation.fragment.ExpenseEntryFragment"
+        android:label="fragment_expense_entry2"
+        tools:layout="@layout/fragment_expense_entry2" />
+    <fragment
+        android:id="@+id/expenseReportFragment"
+        android:name="com.example.smartdailyexpensetracker.presentation.fragment.ExpenseReportFragment"
+        android:label="fragment_expense_report"
+        tools:layout="@layout/fragment_expense_report" />
+</navigation>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.smartdailyexpensetracker.presentation.viewmodel.ExpenseReportViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Header + Export/Share -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:layout_height="wrap_content"
+                    android:text="Expense Report"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+
+                    <ImageButton
+                        android:id="@+id/btnExportCsv"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Export CSV"
+                        android:src="@android:drawable/ic_menu_save"
+                        android:background="?attr/selectableItemBackgroundBorderless" />
+
+                    <ImageButton
+                        android:id="@+id/btnExportPdf"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Export PDF"
+                        android:src="@drawable/baseline_assignment_24"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:layout_marginStart="8dp" />
+
+                    <ImageButton
+                        android:id="@+id/btnShare"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Share"
+                        android:src="@android:drawable/ic_menu_share"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Date Range label -->
+            <TextView
+                android:id="@+id/tvRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Last 7 days"
+                android:textColor="?android:attr/textColorSecondary"
+                android:layout_marginTop="8dp" />
+
+            <!-- Chart -->
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="12dp"
+                tools:ignore="MissingClass" />
+
+            <!-- Daily totals list -->
+            <TextView
+                android:layout_marginTop="16dp"
+                android:text="Daily totals"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDailyTotals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="8dp" />
+
+            <!-- Category totals -->
+            <TextView
+                android:layout_marginTop="16dp"
+                android:text="Category-wise totals"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategoryTotals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

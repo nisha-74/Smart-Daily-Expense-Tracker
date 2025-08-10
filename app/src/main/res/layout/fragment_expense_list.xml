@@ -1,0 +1,95 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.smartdailyexpensetracker.presentation.viewmodel.ExpenseListViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:background="@color/teal_50">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Header Row: Date Filter + Group Toggle -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity=""
+                android:orientation="horizontal">
+
+                <!-- Date Selector -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectDate"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{viewModel.selectedDateLabel}'
+                    android:textColor="@color/teal_700"
+                    app:cornerRadius="20dp" />
+
+                <!-- Group Toggle -->
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/toggleGroupBy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked='@={viewModel.isGroupByCategory}'
+                    android:textOff="Time"
+                    android:textOn="Category"
+                    app:thumbTint="@color/teal_500"
+                    app:trackTint="@color/teal_200" />
+            </LinearLayout>
+
+            <!-- Summary Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/teal_100"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/tvSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_900"
+                    android:text='@{"Total: " + viewModel.totalCount + " items  •  ₹" + String.valueOf(viewModel.totalSpent)}' />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingBottom="60dp" />
+
+            <!-- Empty State -->
+            <TextView
+                android:id="@+id/tvEmptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="No expenses found"
+                android:textSize="16sp"
+                android:textColor="@color/teal_700"
+                android:gravity="center"
+                android:visibility='@{viewModel.expenseList.isEmpty() ? View.VISIBLE : View.GONE}' />
+        </LinearLayout>
+    </FrameLayout>
+</layout>
