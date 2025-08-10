@@ -24,8 +24,11 @@ Built with **MVVM**, **Room Database**, **Data Binding**, and **MPAndroidChart**
 
 ---
 
-## Screenshots
-*(Add screenshots of your app here)*
+# 📱 Smart Daily Expense Tracker
+
+Download the latest APK:  
+[⬇️ Download APK](https://github.com/nisha-74/Smart-Daily-Expense-Tracker/blob/main/app-debug.apk)
+
 
 ---
 
